@@ -30,15 +30,15 @@ public class MainTagGUI extends JFrame {
 	MainTagGUI() {
         //Set up the main frame 
         super("Photo Tagging Tool");
-        setSize(1200, 600);
+        setSize(1500, 780);
         Dimension frameSize = this.getSize();
         int logHeight = 0;
         int buffer = 100;
         int horizBuffer = 10;
         int panelHeight = (int) frameSize.getHeight() - logHeight - buffer;
         int panelWidth = (int) frameSize.getWidth() -2*horizBuffer;
-        int imagePanelWidth = (int) frameSize.getWidth()/2 - horizBuffer;
-        int tagPanelWidth = (int) frameSize.getWidth()/2 - 2*horizBuffer;
+        int imagePanelWidth = (int) frameSize.getWidth()*2/3 - horizBuffer;
+        int tagPanelWidth = (int) frameSize.getWidth()/3 - 2*horizBuffer;
         int controlPanelHeight = 50;
         
         dirs = new Directories();
@@ -52,7 +52,7 @@ public class MainTagGUI extends JFrame {
         centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.LINE_AXIS));     
         
         iPane = new ImagePane(this);
-        iPane.setImageAreaSize(new Dimension(imagePanelWidth, panelHeight));
+        iPane.setImageAreaSize(new Dimension(imagePanelWidth, panelHeight - 18)); //reduction just to make the image line up with teh last tag field
         iPane.setPreferredSize(new Dimension(imagePanelWidth, panelHeight));
         centerPane.add(Box.createRigidArea(new Dimension(5,0)));
         centerPane.add(iPane);
@@ -61,15 +61,22 @@ public class MainTagGUI extends JFrame {
         tPane = new TagPane(this);
         tPane.setTagAreaSize(new Dimension(tagPanelWidth, panelHeight));
         tPane.setPreferredSize(new Dimension(tagPanelWidth, panelHeight));
-        centerPane.add(tPane);
         centerPane.add(Box.createRigidArea(new Dimension(5,0)));
-        pane.add(centerPane);
+        centerPane.add(tPane);
         
-	    //Add the control panel
+        //Add the control panel
         cPane = new ControlPane(this, dirs);
         cPane.setControlAreaSize(new Dimension(panelWidth, controlPanelHeight));
         cPane.setPreferredSize(new Dimension(panelWidth, controlPanelHeight));
+        //centerPane.add(Box.createRigidArea(new Dimension(5,0)));
+        //centerPane.add(cPane);
+        //pane.add(cPane);
+        
+
+        pane.add(centerPane);
         pane.add(cPane);
+        
+	    
         
         //ask for the first file to be tagged and load up the photos etc.
         if(cPane.selectNewFolder() == false) {

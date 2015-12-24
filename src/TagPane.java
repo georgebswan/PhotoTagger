@@ -43,9 +43,9 @@ public class TagPane extends JPanel implements FocusListener, KeyListener {
 	public TagPane(MainTagGUI parent) {
         super(new BorderLayout());
         
-		frame = parent;
-		textChanged = false;
-		String[] labelStrings = { "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5", "Tag 6", "Tag 7", "Tag 8", "Tag 9", "Tag 10" };
+	frame = parent;
+	textChanged = false;
+	String[] labelStrings = { "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5", "Tag 6", "Tag 7", "Tag 8", "Tag 9", "Tag 10", "Tag 11", "Tag 12", "Tag 13", "Tag 14", "Tag 15", "Tag 16", "Tag 17", "Tag 18", "Tag 19", "Tag 20" };
         JLabel[] labels = new JLabel[labelStrings.length];
         fields = new JComponent[labelStrings.length];
         JPanel[] tagItems = new JPanel[labelStrings.length];
@@ -58,15 +58,15 @@ public class TagPane extends JPanel implements FocusListener, KeyListener {
         
         //create the text fields and associate the labels
         for (int i = 0; i < labelStrings.length; i++) {
-        	tagItems[i] = new JPanel();
-        	tagItems[i].setLayout(new BoxLayout(tagItems[i], BoxLayout.LINE_AXIS));
+            tagItems[i] = new JPanel();
+            tagItems[i].setLayout(new BoxLayout(tagItems[i], BoxLayout.LINE_AXIS));
         	
-        	//set up the field
-        	fields[i] = new JTextField(20);
-        	fields[i].setMaximumSize(new Dimension(550, 30));
-        	fields[i].setAlignmentX(Component.LEFT_ALIGNMENT);
-        	fields[i].setName(String.valueOf(i));
-        	fields[i].setFont(textFont);
+            //set up the field
+            fields[i] = new JTextField(20);
+            fields[i].setMaximumSize(new Dimension(550, 30));
+            fields[i].setAlignmentX(Component.LEFT_ALIGNMENT);
+            fields[i].setName(String.valueOf(i));
+            fields[i].setFont(textFont);
         	
         	//set up the label and attach it to the field
             labels[i] = new JLabel(labelStrings[i],
@@ -84,7 +84,7 @@ public class TagPane extends JPanel implements FocusListener, KeyListener {
             
             //add tagItem to tagPanel
             tagPanel.add(tagItems[i]);
-            tagPanel.add(Box.createRigidArea(new Dimension(0,20)));
+            tagPanel.add(Box.createRigidArea(new Dimension(0,10)));
         }
         
         //add the tag panel
@@ -94,7 +94,7 @@ public class TagPane extends JPanel implements FocusListener, KeyListener {
 	public void preloadTextFields(TagList tags) {
 		Color color = new Color(0,0,0);	//BLACK
 		 
-        //Set JTextField text color to color that you choose
+        	//Set JTextField text color to color that you choose
 		for(int i = 0 ; i < tags.getNumTags(); i++) {
 		    ((JTextField) fields[i]).setText(tags.getText(i));
 		    ((JTextField) fields[i]).setForeground(color);
