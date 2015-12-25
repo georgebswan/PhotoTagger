@@ -50,7 +50,7 @@ public class ControlPane extends JPanel {
         JPanel cPanel = new JPanel();
         cPanel.setMaximumSize( controlAreaSize);
         cPanel.setLayout(new BoxLayout(cPanel, BoxLayout.LINE_AXIS));
-        cPanel.add(Box.createRigidArea(new Dimension(200,0)));
+        cPanel.add(Box.createRigidArea(new Dimension(100,0)));
         
         //Create  the 'export' file chooser
         expChooser = new JFileChooser();

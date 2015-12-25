@@ -36,7 +36,7 @@ public class MainTagGUI extends JFrame {
         int buffer = 100;
         int horizBuffer = 10;
         int panelHeight = (int) frameSize.getHeight() - logHeight - buffer;
-        int panelWidth = (int) frameSize.getWidth() -2*horizBuffer;
+        int imagePanelWidthWidth = (int) frameSize.getWidth() -2*horizBuffer;
         int imagePanelWidth = (int) frameSize.getWidth()*2/3 - horizBuffer;
         int tagPanelWidth = (int) frameSize.getWidth()/3 - 2*horizBuffer;
         int controlPanelHeight = 50;
@@ -45,36 +45,36 @@ public class MainTagGUI extends JFrame {
 		
         //Set up the content pane
         JPanel pane = new JPanel();
-        pane.setLayout(new BoxLayout(pane, BoxLayout.PAGE_AXIS));
+        pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
         
-	    //Add the image panel on the left and the tag panel on the right
+	    //Add the image and control panel on the left and the tag panel on the right
         JPanel centerPane = new JPanel();
-        centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.LINE_AXIS));     
+        centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.PAGE_AXIS));     
         
         iPane = new ImagePane(this);
-        iPane.setImageAreaSize(new Dimension(imagePanelWidth, panelHeight - 18)); //reduction just to make the image line up with teh last tag field
+        iPane.setImageAreaSize(new Dimension(imagePanelWidth, panelHeight)); //reduction just to make the image line up with teh last tag field
         iPane.setPreferredSize(new Dimension(imagePanelWidth, panelHeight));
         centerPane.add(Box.createRigidArea(new Dimension(5,0)));
         centerPane.add(iPane);
         
-	    //Add the tagging panel in the middle
+        //Add the control panel below
+        cPane = new ControlPane(this, dirs);
+        cPane.setControlAreaSize(new Dimension(imagePanelWidth, controlPanelHeight));
+        cPane.setPreferredSize(new Dimension(imagePanelWidth, controlPanelHeight));
+        //cPane.setControlAreaSize(new Dimension(panelWidth, controlPanelHeight));
+        //cPane.setPreferredSize(new Dimension(panelWidth, controlPanelHeight));
+        centerPane.add(Box.createRigidArea(new Dimension(5,0)));
+        centerPane.add(cPane);
+        pane.add(centerPane);
+        
+	    //Add the tagging panel on the right
         tPane = new TagPane(this);
         tPane.setTagAreaSize(new Dimension(tagPanelWidth, panelHeight));
         tPane.setPreferredSize(new Dimension(tagPanelWidth, panelHeight));
-        centerPane.add(Box.createRigidArea(new Dimension(5,0)));
-        centerPane.add(tPane);
-        
-        //Add the control panel
-        cPane = new ControlPane(this, dirs);
-        cPane.setControlAreaSize(new Dimension(panelWidth, controlPanelHeight));
-        cPane.setPreferredSize(new Dimension(panelWidth, controlPanelHeight));
         //centerPane.add(Box.createRigidArea(new Dimension(5,0)));
-        //centerPane.add(cPane);
-        //pane.add(cPane);
-        
+        //centerPane.add(tPane);
 
-        pane.add(centerPane);
-        pane.add(cPane);
+        pane.add(tPane);
         
 	    
         
