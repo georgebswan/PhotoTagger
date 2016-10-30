@@ -286,13 +286,13 @@ public class ControlPane extends JPanel {
 				e.printStackTrace();
 			}
 				
-			csvFile.println("Photo,Tag1,Tag2,Tag3,Tag4,Tag5,Tag6,Tag7,Tag8,Tag9,Tag10");
+			csvFile.println("Photo,Tag1,Tag2,Tag3,Tag4,Tag5,Tag6,Tag7,Tag8,Tag9,Tag10,Tag11,Tag12,Tag13,Tag14,Tag15,Tag16,Tag17,Tag18,Tag19,Tag20");
 			csvFile.println(exportDir.getAbsolutePath());
 			//csvFile.println(",NOTE: tags can't contain double quotes (\"\") as part of the text. Use single quotes instead ('). Secondly, if a comma must be used, then surround the whole tag with double quotes at beginning and end,,,,,,,,,");
 	        frame.iPane.photos.exportPhotoTags(csvFile);
 	        csvFile.close();
 	        
-	        JOptionPane.showMessageDialog(null, "Export file '" + exportDir.getAbsolutePath() + "\\" + tagFileName + "' created");
+	        JOptionPane.showMessageDialog(null, "Export file '" + exportDir.getAbsolutePath() + "\\" + tagFileName + "' created, and photos have been tagged");
 	        frame.tPane.setTextChanged(false);	//reset the flag saying there is new tag text
         } 
 		else {

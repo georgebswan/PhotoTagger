@@ -52,8 +52,8 @@ public class MainTagGUI extends JFrame {
         centerPane.setLayout(new BoxLayout(centerPane, BoxLayout.PAGE_AXIS));     
         
         iPane = new ImagePane(this);
-        iPane.setImageAreaSize(new Dimension(imagePanelWidth, panelHeight)); //reduction just to make the image line up with teh last tag field
-        iPane.setPreferredSize(new Dimension(imagePanelWidth, panelHeight));
+        iPane.setImageAreaSize(new Dimension(imagePanelWidth - 25, panelHeight)); //reduction just to give some space between image and tags
+        iPane.setPreferredSize(new Dimension(imagePanelWidth - 25, panelHeight));
         centerPane.add(Box.createRigidArea(new Dimension(5,0)));
         centerPane.add(iPane);
         
